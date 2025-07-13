@@ -50,7 +50,6 @@ return priority[bPriority]-priority[aPriority];
 
 });
 
- let count=0;
 //yeni görev ekleme işlemi
 addbutton.addEventListener("click", function () {
   try {
@@ -67,20 +66,19 @@ addbutton.addEventListener("click", function () {
     return;
     }    
     const oncelik = oncelikRadio.value;
-    count ++;
    
     const gorevDiv = document.createElement("div");
     gorevDiv.className = "task";
      
 
-    gorevDiv.innerHTML = `<span class="task-number">${count}</span>
-        <p>${baslik}</p>
+    gorevDiv.innerHTML = `
+    <p class="baslik">${baslik}</p>
         ${aciklama ? `<p class="task-desc">${aciklama}</p>` : '<p class="task-desc"></p>'}
         <span class="priority ${oncelik}">${oncelik.toUpperCase()}</span>
-        <label class="status">
+        <div class="status">
           <input type="checkbox">
           <span>Bekliyor</span>
-        </label>
+        </div>
         <button class="delete-btn">Sil</button>
     `;
     taskDiv.appendChild(gorevDiv);
