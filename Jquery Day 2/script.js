@@ -1,7 +1,7 @@
-const posts=$(".container");
 let start = 0;
 const limit = 5;
 isLoading=false;
+
 function getPosts(){
         isLoading = true;
 $('#loading').show(); 
@@ -11,7 +11,15 @@ $.ajax({
   url: `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`,
   method: "GET",
   success: function (response) {
-    if (start >= 100) return;
+    if (start >= 100 || response.length===0) {
+$(".scroll").text("Gösterilecek başka veri yok...").css({'color': '#ff6b6b'});
+
+  $(window).off('scroll');
+    $('#loading').hide();
+      return;
+
+      
+    }
     
     response.forEach(function (post) {
 $('.container').append(
@@ -24,9 +32,6 @@ $('.container').append(
 );
          });
 start += limit;
-      $('#loading').hide();
-          isLoading = false;
-
   },
   error: function (xhr, status, error) {
           $(".scroll").text("Yükleme hatası. Tekrar deneyin...");
@@ -41,8 +46,7 @@ start += limit;
 
 $(document).ready(function(){
 
-
-getPosts();   
+  getPosts();   
 
   let scrollTimer;
 
@@ -52,20 +56,8 @@ scrollTimer=setTimeout(function(){
 
  if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
 getPosts(); 
-
   }
-
 },300
 )
- 
-
 });
-
-
-
-
-
-
-
-
 });
