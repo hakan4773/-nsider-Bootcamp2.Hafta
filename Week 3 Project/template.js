@@ -349,7 +349,7 @@ const modalHtml=(`
         //slider içeriği
           const productImage = (`
   <div class="sliderItem">
-     <img src="${product.image}" alt="${product.title}" />
+     <img src="${product.image}" style="cursor:pointer" data-fancybox="product-gallery"  alt="${product.title}" />
      <h4 style="text-align:center;">${product.title}</h4>
      </div>
 `);
