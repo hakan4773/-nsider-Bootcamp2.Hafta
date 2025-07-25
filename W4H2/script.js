@@ -8,7 +8,6 @@ $(document.body).append($appendLocation);
 const style = document.createElement("style");
 style.textContent = `
 body {
-background-color:aqua;
 display: flex;
     justify-content: center;
     flex-direction: column;
@@ -25,7 +24,6 @@ display: flex;
         padding: 20px;
     }
      
-
     .user-card p {
         margin: 5px 0;
         font-size: 14px;
@@ -73,7 +71,9 @@ display: flex;
         text-align:center;
         transition: background-color 0.2s ease;
       }
-   
+   .getAllUser:hover{
+    background-color: #295ff3ff;
+   }
   @media (max-width: 768px) {
   .appendLocation {
     grid-template-columns: 1fr 1fr;
