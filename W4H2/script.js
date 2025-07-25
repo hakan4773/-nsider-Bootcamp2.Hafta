@@ -2,8 +2,14 @@ var script = document.createElement('script');
 script.src = 'https://code.jquery.com/jquery-3.7.1.min.js';
 script.onload = function() {
 
-const $appendLocation = $('<div class="appendLocation"></div>');
-$(document.body).append($appendLocation);
+const appendLocationSelector = '.appendLocation';
+
+let $appendLocation = $(appendLocationSelector);
+if ($appendLocation.length === 0) {
+  $appendLocation = $('<div class="appendLocation"></div>');
+  $(document.body).append($appendLocation);
+}
+
 
 const style = document.createElement("style");
 style.textContent = `
