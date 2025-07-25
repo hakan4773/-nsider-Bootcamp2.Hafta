@@ -137,7 +137,6 @@ const getCachedData = () => {
     return null;
   };
 
-
 getCachedData();
 
 $(document).on("click", ".delete-button", function () {
@@ -152,7 +151,7 @@ $(document).on("click", ".delete-button", function () {
 });
 
 const showUserButton = () => {
-   if (!sessionStorage.getItem("getAllUserUsed")) {
+   if (!sessionStorage.getItem("getUsers")) {
       $appendLocation.html(
         `<button class="getAllUser">Tüm Kullanıcıları Getir</button>`
       );
@@ -174,7 +173,7 @@ const showUserButton = () => {
   observer.observe($appendLocation[0], { childList: true });
 
   $(document).on("click", ".getAllUser", async function () {
-    sessionStorage.setItem("getAllUserUsed", "true");
+    sessionStorage.setItem("getUsers", "true");
        getData();
   });
 
